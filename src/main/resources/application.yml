@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: microservice-order
+
+    microservice-customer:
+      url: https://customer.microservicesdemo.net/customer/api/v1/
+
+    data:
+      mongodb:
+        uri: mongodb://localhost:27017
+        database: order
+
+server:
+  port: 8080
+  servlet:
+    context-path: /order
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, info, metrics
+
+    health:
+      show-details: always
+
+  metrics:
+    tags:
+      application: MonitoringCustomerMicroservice
